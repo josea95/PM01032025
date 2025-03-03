@@ -1,4 +1,4 @@
-// Classe ProdutoBolo herda de Produto
+package main.java;// Classe ProdutoBolo herda de Produto
 
 public class ProdutoBolo extends Produto {
     private String sabor;

@@ -1,3 +1,7 @@
+package main.java;
+
+import main.java.Produto;
+
 // classe produtoPao herda de Produto//
 public class ProdutoPao extends Produto {
 
