@@ -3,7 +3,7 @@
         public static void main(String[] args) {
             Estoque estoque = new Estoque();
 
-            ProdutoPao paoFrances = new ProdutoPao("Pão Francês", 4,50,"pao");
+            ProdutoPao paoFrances = new ProdutoPao("Pão Francês", 4,50,"pao", 3);
 
             estoque.adicionarProduto(paoFrances);
 
