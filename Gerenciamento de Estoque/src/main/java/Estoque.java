@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estoque {
-    List<Produto> estoquesLista;
+    private List<Produto> estoquesLista;
 
     public Estoque() {
         this.estoquesLista = new ArrayList<>();
@@ -12,6 +12,10 @@ public class Estoque {
 
     public void adicionarProduto(Produto produto) {
         estoquesLista.add(produto);
+    }
+
+    public void removerProduto(String nomeProduto) {
+        estoquesLista.removeIf(produto -> produto.nome.equalsIgnoreCase(nomeProduto));
     }
 
     public void exibirEstoque() {
@@ -24,7 +28,6 @@ public class Estoque {
             }
         }
     }
-
 
     public void atualizarEstoque(String nomeProduto, int quantidadeVendida) {
         for (Produto produto : estoquesLista) {
