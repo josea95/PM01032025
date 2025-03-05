@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VendaSimples implements Venda {
-
     private List<String> produtosVendidos;
     private double totalVendas;
 
@@ -14,29 +13,25 @@ public class VendaSimples implements Venda {
     }
 
     @Override
-    public void realizarVenda(String nomeProduto, int quantidade) {
-        // Simulação
-        double precoProduto = 50.0;  // Simulando o preço fixo do produto
-        double valorVenda = precoProduto * quantidade;
-        totalVendas += valorVenda;
-
-        // Adicionando o produto vendido ao resumo
-        produtosVendidos.add(quantidade + "x " + nomeProduto + " - R$" + valorVenda);
-
-        System.out.println("Venda de " + quantidade + "x " + nomeProduto + " realizada com sucesso!");
+    public void realizarVenda(Produto produto, int quantidade) {
+        if (produto.getQuantidade() >= quantidade) {
+            produto.atualizarEstoque(quantidade);
+            double valorVenda = produto.getPreco() * quantidade;
+            totalVendas += valorVenda;
+            produtosVendidos.add(quantidade + "x " + produto.getNome() + " - R$" + valorVenda);
+            System.out.println("Venda realizada: " + quantidade + "x " + produto.getNome());
+        } else {
+            System.out.println("Erro: Estoque insuficiente para " + produto.getNome());
+        }
     }
 
     @Override
     public String gerarResumo() {
-        if (produtosVendidos.isEmpty()) {
-            return "Nenhuma venda realizada.";
+        StringBuilder resumo = new StringBuilder("Resumo das Vendas:\n");
+        for (String venda : produtosVendidos) {
+            resumo.append(venda).append("\n");
         }
-
-        StringBuilder resumo = new StringBuilder("Resumo da Venda:\n");
-        for (String produto : produtosVendidos) {
-            resumo.append(produto).append("\n");
-        }
-        resumo.append("Total das vendas: R$").append(totalVendas);
+        resumo.append("Total: R$").append(totalVendas);
         return resumo.toString();
     }
 }
