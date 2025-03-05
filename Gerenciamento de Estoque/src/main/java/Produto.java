@@ -13,8 +13,8 @@ public abstract class Produto {
         this.preço = preço;
         this.quantidade = quantidade;
     }
-    //Metodos da classe Produto//
 
+    //Metodos da classe Produto//
     public String getNome() {
         return nome;
     }
@@ -39,8 +39,13 @@ public abstract class Produto {
         this.quantidade = quantidade;
     }
 
-    // Método abstrato implementado nas classes filhas//
-
+    public void atualizarEstoque(int quantidadeVendida) {
+        if (quantidadeVendida <= quantidade) {
+            quantidade -= quantidadeVendida;
+        } else {
+            System.out.println("Estoque insuficiente para " + nome);
+        }
+    }
     public abstract String getDescricao();
 }
 
