@@ -3,15 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
-=======
-      <sourceFolder url="file://$MODULE_DIR$/Gerenciamento de Estoque/src" isTestSource="false" />
-    </content>
-    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
->>>>>>> Gerenciamento-de-Estoque
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
