@@ -1,50 +1,22 @@
-package main.java;// Classe ProdutoBolo herda de Produto
+package main.java;
 
-public class ProdutoBolo extends Produto {
+class ProdutoBolo extends Produto {
     private String sabor;
-    private boolean temRecheio;
-    private String cobertura;
+    private boolean recheado;
 
-    // Construtor
-    public ProdutoBolo(String nome, double preço, int quantidade, String sabor, boolean temRecheio, String cobertura) {
-        super(nome, preço, quantidade);
+    public ProdutoBolo(String nome, double preco, int quantidade, String sabor, boolean recheado) {
+        super(nome, preco, quantidade);
         this.sabor = sabor;
-        this.temRecheio = temRecheio;
-        this.cobertura = cobertura;
+        this.recheado = recheado;
     }
-
-    // Métodos Getters e Setters
-
-    public String getSabor() {
-        return sabor;
-    }
-
-    public void setSabor(String sabor) {
-        this.sabor = sabor;
-    }
-
-    public boolean isTemRecheio() {
-        return temRecheio;
-    }
-
-    public void setTemRecheio(boolean temRecheio) {
-        this.temRecheio = temRecheio;
-    }
-
-    public String getCobertura() {
-        return cobertura;
-    }
-
-    public void setCobertura(String cobertura) {
-        this.cobertura = cobertura;
-    }
-
-    // Sobrescrita do método//
 
     @Override
     public String getDescricao() {
-        return "Bolo: " + nome + " - Sabor: " + sabor +
-                (temRecheio ? " com recheio" : " sem recheio") +
-                " - Cobertura: " + cobertura + " - Preço: R$ " + preço;
+        return nome + " - Sabor: " + sabor + ", Recheado: " + (recheado ? "Sim" : "Não");
+    }
+
+    @Override
+    public void atualizarEstoque(int quantidadeVendida) {
+        super.atualizarEstoque( quantidadeVendida );
     }
 }
