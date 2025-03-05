@@ -14,14 +14,17 @@ public class Main {
         estoque.adicionarProduto(paoFrances);
         estoque.adicionarProduto(boloChocolate);
         estoque.adicionarProduto(boloCenoura);
+        //so ira remover depois que nao houver mais estoque nele
+        estoque.removerProduto( boloCenoura );
 
         vendas.realizarVenda(paoFrances, 25);
         vendas.realizarVenda(boloChocolate, 15);
-        vendas.realizarVenda( boloCenoura, 50 );
-
+        vendas.realizarVenda( boloCenoura, 40 );
 
         System.out.println(vendas.gerarResumo());
         estoque.exibirEstoque();
+        //remocao valida pq agora nao existe mais estoque do bolo de cenoura
+        estoque.removerProduto( boloCenoura );
 
     }
 }

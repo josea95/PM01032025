@@ -21,8 +21,14 @@ public class Estoque {
     }
 
     public void removerProduto(Produto produto) {
-        produtos.remove(produto);
-        System.out.println( produto.getNome() + " removido com sucesso");
+        // Remocao do produto somente quando ele chegar/for 0
+        if (produto.getQuantidade() == 0) {
+            produtos.removeIf(produtoParaRemover -> produtoParaRemover.getNome().equals(produto.getNome()));
+            System.out.println(produto.getNome() + " removido com sucesso");
+        } else {
+            System.out.println("Não é possível remover " + produto.getNome() + " enquanto houver estoque.");
+        }
     }
+
 }
 
