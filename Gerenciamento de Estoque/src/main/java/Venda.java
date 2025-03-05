@@ -1,6 +1,6 @@
 package main.java;
 
 public interface Venda {
-    void realizarVenda(String nomeProduto, int quantidade);
+    void realizarVenda(Produto produto, int quantidade);
     String gerarResumo();
 }
