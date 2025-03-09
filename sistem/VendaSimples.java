@@ -48,6 +48,12 @@ public class VendaSimples implements Venda {
             return;
         }
 
+        //Verifica se a quantidade for menor que 0
+        if(quantidade < 0){
+            System.out.println("Erro: Quantidade deve ser maior que zero.");
+            return;
+        }
+
         // Atualizar estoque
         produtoParaVender.setQuantidade(produtoParaVender.getQuantidade() - quantidade);
         double valorVenda = produtoParaVender.getPreco() * quantidade;
@@ -58,9 +64,9 @@ public class VendaSimples implements Venda {
         System.out.println("Venda realizada com sucesso!");
 
         // Remover do estoque se a quantidade chegou a 0
-        if (produtoParaVender.getQuantidade() == 0) {
-            estoque.removerProduto(produtoParaVender);
-        }
+//        if (produtoParaVender.getQuantidade() == 0) {
+//            estoque.removerProduto(produtoParaVender);
+//        }
     }
 
     @Override
