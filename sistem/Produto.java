@@ -1,3 +1,5 @@
+package sistem;
+
 public abstract class Produto {
 
     //Atributos da classe produto//
@@ -11,7 +13,7 @@ public abstract class Produto {
         this.preço = preço;
         this.quantidade = quantidade;
     }
-    //Metodos da classe Produto//
+    //Metodos da classe sistem.Produto//
 
     public String getNome() {
         return nome;

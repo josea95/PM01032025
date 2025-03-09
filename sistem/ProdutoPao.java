@@ -1,10 +1,12 @@
-// classe produtoPao herda de Produto//
+package sistem;
+
+// classe produtoPao herda de sistem.Produto//
 public class ProdutoPao extends Produto {
 
 public String tipo;
 private double peso;
 
-//Metodo Construtor Produto pao //
+//Metodo Construtor sistem.Produto pao //
 
     public ProdutoPao(String nome, double preço, int quantidade, String tipo, double peso) {
         super(nome, preço, quantidade);

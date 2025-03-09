@@ -6,23 +6,61 @@ public class VendaSimples implements Venda {
 
     private List<String> produtosVendidos;
     private double totalVendas;
+    private Estoque estoque;
 
-    public VendaSimples() {
-        produtosVendidos = new ArrayList<>();
+    public VendaSimples(Estoque estoque) {
+        if (estoque == null) {
+            throw new IllegalArgumentException("Erro: O estoque não pode ser nulo!");
+        }
+
+        this.estoque = estoque;
+        this.produtosVendidos = new ArrayList<>();
         totalVendas = 0.0;
     }
 
     @Override
     public void realizarVenda(String nomeProduto, int quantidade) {
-        // Simulação 
-        double precoProduto = 50.0;  // Simulando o preço fixo do produto
-        double valorVenda = precoProduto * quantidade;
+
+        if (estoque == null) {
+            System.out.println("Erro: Estoque não foi inicializado.");
+            return;
+        }
+        Produto produtoParaVender = null;
+
+        // Buscar o produto no estoque
+
+        for (Produto produto : estoque.produtos) {
+            if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
+                produtoParaVender = produto;
+                break;
+            }
+        }
+
+        // Se o produto não foi encontrado, mostrar erro
+        if (produtoParaVender == null) {
+            System.out.println("Erro: Produto não encontrado no estoque.");
+            return;
+        }
+
+        // Verificar se há quantidade suficiente no estoque
+        if (produtoParaVender.getQuantidade() < quantidade) {
+            System.out.println("Erro: Estoque insuficiente para a venda.");
+            return;
+        }
+
+        // Atualizar estoque
+        produtoParaVender.setQuantidade(produtoParaVender.getQuantidade() - quantidade);
+        double valorVenda = produtoParaVender.getPreco() * quantidade;
         totalVendas += valorVenda;
 
-        // Adicionando o produto vendido ao resumo
+        // Adicionar venda ao resumo
         produtosVendidos.add(quantidade + "x " + nomeProduto + " - R$" + valorVenda);
+        System.out.println("Venda realizada com sucesso!");
 
-        System.out.println("Venda de " + quantidade + "x " + nomeProduto + " realizada com sucesso!");
+        // Remover do estoque se a quantidade chegou a 0
+        if (produtoParaVender.getQuantidade() == 0) {
+            estoque.removerProduto(produtoParaVender);
+        }
     }
 
     @Override

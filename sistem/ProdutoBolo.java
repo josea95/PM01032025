@@ -1,4 +1,4 @@
-// Classe ProdutoBolo herda de Produto
+package sistem;// Classe sistem.ProdutoBolo herda de sistem.Produto
 
 public class ProdutoBolo extends Produto {
     private String sabor;
